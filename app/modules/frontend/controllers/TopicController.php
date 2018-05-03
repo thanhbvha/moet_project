@@ -13,7 +13,7 @@ class TopicController extends ControllerBase
 
     public function indexAction()
     {
-        $currentPage = $this->request->getQuery('page', 'int') ?? 1;
+        $currentPage = $this->request->has('page') ? $this->request->get('page', 'int') : 1;
         $paginator = new Paginate(
             [
                 'data'  => $this->_user->MoetTopics,
