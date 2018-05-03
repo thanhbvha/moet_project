@@ -25,10 +25,12 @@ class LoginController extends ControllerBase
     			$password = trim($this->request->getPost('password'));
 
     			$userInfo =MoetUsers::findFirstByUsername($username);
-    			if($this->security->checkHash($password, $userInfo->password)){
-    				$this->session->set("session_users_$sessID", $userInfo);
-    				return $this->response->redirect('/');
-    			}
+                if($userInfo->status===1){
+                    if($this->security->checkHash($password, $userInfo->password)){
+                        $this->session->set("session_users_$sessID", $userInfo);
+                        return $this->response->redirect('/');
+                    }
+                }
     			$this->flash->error('Tên đăng nhập hoặc mật khẩu không đúng');
     		}
     	}
@@ -48,11 +50,13 @@ class LoginController extends ControllerBase
 			$this->session->remove("token_$sessID");
 			$userInfo = MoetUsers::findFirstByEmail($oauthInfo->email);
 			if($userInfo){
-				$userInfo->fullname = $oauthInfo->name;
-				$userInfo->save();
+                if($userInfo->status===1){
+    				$userInfo->fullname = $oauthInfo->name;
+    				$userInfo->save();
 
-				$this->session->set("session_users_$sessID", $userInfo);
-    			return $this->response->redirect('/');
+    				$this->session->set("session_users_$sessID", $userInfo);
+        			return $this->response->redirect('/');
+                }
 			}
 			$this->flash->error('Tài khoản không hợp lệ');
 			return $this->response->redirect('login');
