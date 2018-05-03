@@ -31,7 +31,8 @@
         {{ javascript_include('js/custom.js') }}
         <script type="text/javascript">
             $('#openid-login').click(function(){
-                window.location.href='/login/google';
+                var url = document.getElementById('google-login').getAttribute('action');
+                window.location.href=url;
             });
             $('#delete-confirm').on('show.bs.modal', function(e) {
                 var url = $(e.relatedTarget).data('href');

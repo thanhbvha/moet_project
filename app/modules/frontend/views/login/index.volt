@@ -55,3 +55,5 @@
         </div>
     {{ end_form() }}
 </div>
+
+{{ form('login/google', 'method': 'post', 'id':'google-login') }}{{ end_form() }}
