@@ -57,7 +57,7 @@ class LoginController extends ControllerBase
     				$this->session->set("session_users_$sessID", $userInfo);
         			return $this->response->redirect('/');
                 }else{
-                    $this->flash->notice('Tài khoản đang trong quá trình chờ duyệt');
+                    $this->flash->warning('Tài khoản đang trong quá trình chờ duyệt');
                 }
 			}else{
                 $registerInfo = new MoetUsers();
