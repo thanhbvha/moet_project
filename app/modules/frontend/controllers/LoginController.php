@@ -56,9 +56,18 @@ class LoginController extends ControllerBase
 
     				$this->session->set("session_users_$sessID", $userInfo);
         			return $this->response->redirect('/');
+                }else{
+                    $this->flash->notice('Tài khoản đang trong quá trình chờ duyệt');
                 }
-			}
-			$this->flash->error('Tài khoản không hợp lệ');
+			}else{
+                $registerInfo = new MoetUsers();
+                $registerInfo->email = $oauthInfo->email;
+                $registerInfo->fullname = $oauthInfo->name;
+                $registerInfo->role = 2;
+                $registerInfo->status = 0;
+                $registerInfo->save();
+                $this->flash->success('Đăng ký tài khoản thành công');
+            }
 			return $this->response->redirect('login');
     	}
     	return $this->response->redirect('login/ggoauth');
