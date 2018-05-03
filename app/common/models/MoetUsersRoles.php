@@ -33,7 +33,7 @@ class MoetUsersRoles extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("project_moet");
+        $this->setSchema("qlkh");
         $this->setSource("moet_users_roles");
         $this->hasMany('id', 'Moet\Models\MoetUsers', 'role', ['alias' => 'MoetUsers']);
     }

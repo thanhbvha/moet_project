@@ -88,7 +88,7 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("project_moet");
+        $this->setSchema("qlkh");
         $this->setSource("moet_units_specialize");
         $this->hasMany('id', 'Moet\Models\MoetTopics', 'specialize_id', ['alias' => 'MoetTopics']);
         $this->belongsTo('creator_id', 'Moet\Models\\MoetUsers', 'id', ['alias' => 'MoetUsers']);

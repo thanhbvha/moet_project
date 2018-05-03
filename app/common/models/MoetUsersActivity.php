@@ -70,7 +70,7 @@ class MoetUsersActivity extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("project_moet");
+        $this->setSchema("qlkh");
         $this->setSource("moet_users_activity");
         $this->belongsTo('creator_id', 'Moet\Models\\MoetUsers', 'id', ['alias' => 'MoetUsers']);
     }

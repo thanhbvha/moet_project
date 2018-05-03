@@ -172,7 +172,7 @@ class MoetTopics extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("project_moet");
+        $this->setSchema("qlkh");
         $this->setSource("moet_topics");
         $this->belongsTo('units_id', 'Moet\Models\\MoetUnits', 'id', ['alias' => 'MoetUnits']);
         $this->belongsTo('fields_id', 'Moet\Models\\MoetFields', 'id', ['alias' => 'MoetFields']);
