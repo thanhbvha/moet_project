@@ -1,6 +1,6 @@
 /cache/volt/*.*
 /logs/*.*
-/config/config.php
-/config/services_web.php
-/config/google_app_login.json
+/app/config/config.php
+/app/config/services_web.php
+/app/config/google_app_login.json
 .phalcon
