@@ -3,7 +3,7 @@
         <div id="cssmenu">
             <ul>
                 <li class="home">
-                    <a href="/" title="Trang chủ">{{ image('img/icon-home.png') }}</a>
+                    <a href="{{ url('/') }}" title="Trang chủ">{{ image('img/icon-home.png') }}</a>
                 </li>
                 <li class="has-sub">
                     <a href="#" title="Giới thiệu"><span>Giới thiệu</span></a>
