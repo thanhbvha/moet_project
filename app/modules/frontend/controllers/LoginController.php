@@ -25,7 +25,7 @@ class LoginController extends ControllerBase
     			$password = trim($this->request->getPost('password'));
 
     			$userInfo =MoetUsers::findFirstByUsername($username);
-                if($userInfo->status===1){
+                if(1 === (int) $userInfo->status){
                     if($this->security->checkHash($password, $userInfo->password)){
                         $this->session->set("session_users_$sessID", $userInfo);
                         return $this->response->redirect('/');
@@ -50,7 +50,7 @@ class LoginController extends ControllerBase
 			$this->session->remove("token_$sessID");
 			$userInfo = MoetUsers::findFirstByEmail($oauthInfo->email);
 			if($userInfo){
-                if($userInfo->status===1){
+                if(1 === (int) $userInfo->status){
     				$userInfo->fullname = $oauthInfo->name;
     				$userInfo->save();
 
