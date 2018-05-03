@@ -12,7 +12,7 @@ class LoginController extends ControllerBase
     {
         $sessID = $this->session->getId();
         if($this->session->has("session_users_$sessID")){
-            return $this->response->redirect(['for'=>'frontend']);
+            return $this->response->redirect('/');
         }
     }
 
@@ -27,7 +27,7 @@ class LoginController extends ControllerBase
     			$userInfo =MoetUsers::findFirstByUsername($username);
     			if($this->security->checkHash($password, $userInfo->password)){
     				$this->session->set("session_users_$sessID", $userInfo);
-    				return $this->response->redirect(['for'=>'frontend']);
+    				return $this->response->redirect('/');
     			}
     			$this->flash->error('Tên đăng nhập hoặc mật khẩu không đúng');
     		}
@@ -52,7 +52,7 @@ class LoginController extends ControllerBase
 				$userInfo->save();
 
 				$this->session->set("session_users_$sessID", $userInfo);
-    			return $this->response->redirect(['for'=>'frontend']);
+    			return $this->response->redirect('/');
 			}
 			$this->flash->error('Tài khoản không hợp lệ');
 			return $this->response->redirect('login');
