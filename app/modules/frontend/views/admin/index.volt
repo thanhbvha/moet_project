@@ -5,11 +5,6 @@
 			<hr>
 		</div>
 		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/topic') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đề tài
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
 			<a href="{{ url('admin/logging') }}" class="btn btn-outline-primary btn-sm">
 				<i class="fa fa-history"></i> Logging
 			</a>
@@ -47,7 +42,11 @@
 			<label class="control-label font-weight-bold">Số điện thoại:</label>
 		</div>
 		<div class="col-md-5">
-			<label class="control-label">{{ user.phone }}</label>
+			<label class="control-label">
+				{% if user.MoetUsersInfo.phone is defined %}
+					{{ user.MoetUsersInfo.phone }}
+				{% endif %}
+			</label>
 		</div>
 	</div>
 	<div class='row'>

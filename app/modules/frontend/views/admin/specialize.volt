@@ -4,21 +4,6 @@
 			<h5 style="font-size: 1.25rem;">QUẢN LÝ CHUYÊN NGÀNH</h5>
 			<hr>
 		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/topic') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đề tài
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/units') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đơn vị
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/fields') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý lĩnh vực
-			</a>
-		</div>
 	</div>
 </div>
 
@@ -35,6 +20,8 @@
 	  	<thead>
 	    	<tr>
 	      		<th scope="col">#</th>
+	      		<th scope="col">Mã</th>
+	      		<th scope="col">Lĩnh vực</th>
 	      		<th scope="col">Chuyên ngành</th>
 	      		<th scope="col">Người tạo</th>
 	      		<th scope="col">Ngày tạo</th>
@@ -45,6 +32,8 @@
 	  		{% for index,specialize in unitSpecialize %}
 	    	<tr>
 	      		<th scope="row">{{ loop.index }}</th>
+	      		<td>{{ specialize.code }}</td>
+	      		<td>{{ specialize.MoetFields.name }}</td>
 	      		<td>{{ specialize.name }}</td>
 	      		<td>{{ specialize.MoetUsers.email }}</td>
 	      		<td>{{ date("Y-m-d H:i:s", specialize.created_at) }}</td>

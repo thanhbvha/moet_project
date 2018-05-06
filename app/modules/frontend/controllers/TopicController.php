@@ -10,13 +10,22 @@ use PHPExcel;
 
 class TopicController extends ControllerBase
 {
+    public function beforeExecuteRoute($dispatcher)
+    {
+        $sessID = $this->session->getId();
+        $user = $this->session->get("session_users_$sessID");
+        if(0 === (int)$user->status){
+            return $this->response->redirect('/');
+        }
+    }
 
     public function indexAction()
     {
         $currentPage = $this->request->has('page') ? $this->request->get('page', 'int') : 1;
+        $topics = !is_null($this->_user->MoetTopics)?$this->_user->MoetTopics:new \stdClass();
         $paginator = new Paginate(
             [
-                'data'  => $this->_user->MoetTopics,
+                'data'  => $topics,
                 'limit' => 10,
                 'page'  => $currentPage,
             ]

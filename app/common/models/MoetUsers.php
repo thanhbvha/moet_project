@@ -47,13 +47,6 @@ class MoetUsers extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
-     * @Column(type="string", length=255, nullable=true)
-     */
-    public $phone;
-
-    /**
-     *
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
@@ -123,12 +116,13 @@ class MoetUsers extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("qlkh");
+        $this->setSchema($this->getDi()['config']->database->dbname);
         $this->setSource("moet_users");
         $this->hasMany('id', 'Moet\Models\MoetFields', 'creator_id', ['alias' => 'MoetFields']);
         $this->hasMany('id', 'Moet\Models\MoetTopics', 'creator_id', ['alias' => 'MoetTopics']);
         $this->hasMany('id', 'Moet\Models\MoetUnits', 'creator_id', ['alias' => 'MoetUnits']);
         $this->hasMany('id', 'Moet\Models\MoetUnitsSpecialize', 'creator_id', ['alias' => 'MoetUnitsSpecialize']);
+        $this->hasOne('id', 'Moet\Models\MoetUsersInfo', 'creator_id', ['alias' => 'MoetUsersInfo']);
         $this->belongsTo('role', 'Moet\Models\\MoetUsersRoles', 'id', ['alias' => 'MoetUsersRoles']);
     }
 

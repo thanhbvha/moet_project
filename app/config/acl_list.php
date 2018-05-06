@@ -58,8 +58,8 @@ return [
                     ],
                 ],
             ],
-            'partner' => [
-                'description' => 'logged in partner',
+            'register' => [
+                'description' => 'logged in register',
                 'inherit' => 'guest',
                 'allow' => [
                     'index' => [
@@ -70,6 +70,12 @@ return [
                             'logout'
                         ],
                     ],
+                ]
+            ],
+            'partner' => [
+                'description' => 'logged in partner',
+                'inherit' => 'register',
+                'allow' => [
                     'topic' => [
                         'actions' => [
                             'index',

@@ -4,21 +4,6 @@
 			<h5 style="font-size: 1.25rem;">QUẢN LÝ LĨNH VỰC</h5>
 			<hr>
 		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/topic') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đề tài
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/units') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đơn vị
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/specialize') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý chuyên ngành
-			</a>
-		</div>
 	</div>
 </div>
 
@@ -35,6 +20,7 @@
 	  	<thead>
 	    	<tr>
 	      		<th scope="col">#</th>
+	      		<th scope="col">Mã</th>
 	      		<th scope="col">Lĩnh vực</th>
 	      		<th scope="col">Người tạo</th>
 	      		<th scope="col">Ngày tạo</th>
@@ -45,6 +31,7 @@
 	  		{% for index,field in fields %}
 	    	<tr>
 	      		<th scope="row">{{ loop.index }}</th>
+	      		<td>{{ field.code }}</td>
 	      		<td>{{ field.name }}</td>
 	      		<td>{{ field.MoetUsers.email }}</td>
 	      		<td>{{ date("Y-m-d H:i:s", field.created_at) }}</td>

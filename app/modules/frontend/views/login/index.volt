@@ -44,7 +44,7 @@
                 <div class="row justify-content-between">
                     <div class="col-md-auto">
                         <button type="button" class="btn btn-default" id='openid-login'>
-                            <img src="/qlkh/public/img/gmail-login.jpeg">
+                            {{ image('img/gmail-login.jpeg') }}
 							<!--i class='fa fa-google'></i>oogle-->
                         </button>
                     </div>

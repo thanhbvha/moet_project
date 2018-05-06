@@ -4,21 +4,6 @@
 			<h5 style="font-size: 1.25rem;">QUẢN LÝ ĐƠN VỊ</h5>
 			<hr>
 		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/topic') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đề tài
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/fields') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý lĩnh vực
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/specialize') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý chuyên ngành
-			</a>
-		</div>
 	</div>
 </div>
 

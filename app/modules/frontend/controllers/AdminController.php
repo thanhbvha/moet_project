@@ -170,6 +170,7 @@ class AdminController extends ControllerBase
     			if($this->request->isPost()){
 					$dataPost = $this->request->getPost();
 					$fields = new MoetFields();
+                    $fields->code = $dataPost['code'];
 					$fields->name = $dataPost['name'];
 					$fields->creator_id = $this->_user->id;
 					$fields->save();
@@ -187,6 +188,7 @@ class AdminController extends ControllerBase
     				if($fields){
 	    				if($this->request->isPost()){
 	    					$dataPost = $this->request->getPost();
+                            $fields->code = $dataPost['code'];
 	    					$fields->name = $dataPost['name'];
 	    					$fields->creator_id = $this->_user->id;
 							$fields->save();
@@ -219,6 +221,8 @@ class AdminController extends ControllerBase
     			if($this->request->isPost()){
 					$dataPost = $this->request->getPost();
 					$moetUnitsSpecialize = new MoetUnitsSpecialize();
+                    $moetUnitsSpecialize->code = $dataPost['code'];
+                    $moetUnitsSpecialize->fields_id = $dataPost['fields_id'];
 					$moetUnitsSpecialize->name = $dataPost['name'];
 					$moetUnitsSpecialize->creator_id = $this->_user->id;
 					$moetUnitsSpecialize->save();
@@ -236,6 +240,8 @@ class AdminController extends ControllerBase
     				if($moetUnitsSpecialize){
 	    				if($this->request->isPost()){
 	    					$dataPost = $this->request->getPost();
+                            $moetUnitsSpecialize->code = $dataPost['code'];
+                            $moetUnitsSpecialize->fields_id = $dataPost['fields_id'];
 	    					$moetUnitsSpecialize->name = $dataPost['name'];
 	    					$moetUnitsSpecialize->creator_id = $this->_user->id;
 							$moetUnitsSpecialize->save();

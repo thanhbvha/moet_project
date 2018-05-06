@@ -88,7 +88,7 @@ class MoetUnits extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("qlkh");
+        $this->setSchema($this->getDi()['config']->database->dbname);
         $this->setSource("moet_units");
         $this->belongsTo('creator_id', 'Moet\\Models\\MoetUsers', 'id', ['alias' => 'MoetUsers']);
     }

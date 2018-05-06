@@ -23,6 +23,13 @@ class MoetFields extends \Phalcon\Mvc\Model
 
     /**
      *
+     * @var string
+     * @Column(type="string", length=20, nullable=true)
+     */
+    public $code;
+
+    /**
+     *
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
@@ -88,8 +95,9 @@ class MoetFields extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("qlkh");
+        $this->setSchema($this->getDi()['config']->database->dbname);
         $this->setSource("moet_fields");
+        $this->hasMany('id', 'Moet\Models\MoetUnitsSpecialize', 'fields_id', ['alias' => 'MoetUnitsSpecialize']);
         $this->belongsTo('creator_id', 'Moet\\Models\\MoetUsers', 'id', ['alias' => 'MoetUsers']);
     }
 

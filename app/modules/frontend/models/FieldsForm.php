@@ -9,6 +9,7 @@ class FieldsForm extends Form
 {
 	public function initialize(){
 		$this->add( new Hidden('id') );
+		$this->add( new Text('code') );
 		$this->add( new Text('name') );
 	}
 }

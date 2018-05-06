@@ -2,7 +2,10 @@
 
 namespace Moet\Models;
 
-class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Email as EmailValidator;
+
+class MoetUsersInfo extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -16,24 +19,38 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var string
-     * @Column(type="string", length=255, nullable=true)
-     */
-    public $name;
-
-    /**
-     *
-     * @var string
-     * @Column(type="string", length=20, nullable=true)
-     */
-    public $code;
-
-    /**
-     *
      * @var integer
      * @Column(type="integer", length=11, nullable=true)
      */
-    public $fields_id;
+    public $units_id;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", length=255, nullable=true)
+     */
+    public $address;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", length=50, nullable=true)
+     */
+    public $phone;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", length=255, nullable=true)
+     */
+    public $unit_manager;
+
+    /**
+     *
+     * @var string
+     * @Column(type="string", nullable=true)
+     */
+    public $noted;
 
     /**
      *
@@ -50,13 +67,6 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
     public $created_at;
 
     /**
-     *
-     * @var integer
-     * @Column(type="integer", length=11, nullable=true)
-     */
-    public $updated_at;
-
-    /**
      * set created_at beforeCreate
      */    
     public function beforeCreate()
@@ -65,21 +75,13 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
     }
 
     /**
-     * set updated_at beforeUpdate
-     */    
-    public function beforeUpdate()
-    {
-      $this->updated_at = time();
-    }
-
-    /**
      * write log if create success | afterCreate
      */    
     public function afterCreate()
     {
         $log = [
-            'title' => "Create new specialize [{$this->id}][{$this->name}]",
-            'message' => "Create new specialize [{$this->id}][{$this->name}] success",
+            'title' => "{$this->MoetUsers->email} create user infomation",
+            'message' => "{$this->MoetUsers->email} create user infomation success",
             'creator_id' => $this->creator_id
         ];
         $this->getDi()['userlog']->logTask($log);
@@ -90,12 +92,34 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
     public function afterUpdate()
     {
         $log = [
-            'title' => "Update specialize [{$this->id}][{$this->name}]",
-            'message' => "Update specialize [{$this->id}][{$this->name}] success",
+            'title' => "{$this->MoetUsers->email} update user infomation",
+            'message' => "{$this->MoetUsers->email} update user infomation success",
             'creator_id' => $this->creator_id
         ];
         $this->getDi()['userlog']->logTask($log);
     }
+
+    /**
+     * Validations and business logic
+     *
+     * @return boolean
+     */
+    /*public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'email',
+            new EmailValidator(
+                [
+                    'model'   => $this,
+                    'message' => 'Please enter a correct email address',
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }*/
 
     /**
      * Initialize method for model.
@@ -103,9 +127,8 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
     public function initialize()
     {
         $this->setSchema($this->getDi()['config']->database->dbname);
-        $this->setSource("moet_units_specialize");
-        $this->hasMany('id', 'Moet\Models\MoetTopics', 'specialize_id', ['alias' => 'MoetTopics']);
-        $this->belongsTo('fields_id', 'Moet\\Models\\MoetFields', 'id', ['alias' => 'MoetFields']);
+        $this->setSource("moet_users_info");
+        $this->belongsTo('units_id', 'Moet\Models\\MoetUnits', 'id', ['alias' => 'MoetUnits']);
         $this->belongsTo('creator_id', 'Moet\Models\\MoetUsers', 'id', ['alias' => 'MoetUsers']);
     }
 
@@ -116,14 +139,14 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
      */
     public function getSource()
     {
-        return 'moet_units_specialize';
+        return 'moet_users_info';
     }
 
     /**
      * Allows to query a set of records that match the specified conditions
      *
      * @param mixed $parameters
-     * @return MoetUnitsSpecialize[]|MoetUnitsSpecialize|\Phalcon\Mvc\Model\ResultSetInterface
+     * @return MoetUsersInfo[]|MoetUsersInfo|\Phalcon\Mvc\Model\ResultSetInterface
      */
     public static function find($parameters = null)
     {
@@ -134,7 +157,7 @@ class MoetUnitsSpecialize extends \Phalcon\Mvc\Model
      * Allows to query the first record that match the specified conditions
      *
      * @param mixed $parameters
-     * @return MoetUnitsSpecialize|\Phalcon\Mvc\Model\ResultInterface
+     * @return MoetUsersInfo|\Phalcon\Mvc\Model\ResultInterface
      */
     public static function findFirst($parameters = null)
     {

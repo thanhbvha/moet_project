@@ -50,23 +50,19 @@ class LoginController extends ControllerBase
 			$this->session->remove("token_$sessID");
 			$userInfo = MoetUsers::findFirstByEmail($oauthInfo->email);
 			if($userInfo){
-                if(1 === (int) $userInfo->status){
-    				$userInfo->fullname = $oauthInfo->name;
-    				$userInfo->save();
+				$userInfo->fullname = $oauthInfo->name;
+				$userInfo->save();
 
-    				$this->session->set("session_users_$sessID", $userInfo);
-        			return $this->response->redirect('/');
-                }else{
-                    $this->flash->warning('Tài khoản đang trong quá trình chờ duyệt');
-                }
+				$this->session->set("session_users_$sessID", $userInfo);
+    			return $this->response->redirect('/');
 			}else{
                 $registerInfo = new MoetUsers();
                 $registerInfo->email = $oauthInfo->email;
                 $registerInfo->fullname = $oauthInfo->name;
-                $registerInfo->role = 2;
+                $registerInfo->role = 4;
                 $registerInfo->status = 0;
                 $registerInfo->save();
-                $this->flash->success('Đăng ký tài khoản thành công');
+                $this->flash->success('Đăng ký tài khoản thành công và đang ở chế độ chờ. Đề nghị liên hệ với số điện thoại 0904184886 để được duyệt.');
             }
 			return $this->response->redirect('login');
     	}
