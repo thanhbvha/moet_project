@@ -18,6 +18,9 @@
 			Tài khoản của bạn đang ở chế độ chờ. Đề nghị liên hệ với số điện thoại <b style="font-weight: bold;color: darkblue;">0904184886</b> để được duyệt.
 		</div>
 	{% elseif user.MoetUsersRoles.name !== 'admin' and user.is_update === "0" %}
+		<div class="alert alert-info">
+			<i class="fa fa-info-circle"></i> Hãy cập nhật thông tin trước khi đăng ký đề tài
+		</div>
 		<div class='row form-group'>
             <div class="offset-md-2 col-md-5">
                 <?php $this->flash->output() ?>
