@@ -29,17 +29,6 @@
 		<?= $form->render('id') ?>
 		{% endif %}
 		<div class='row form-group'>
-			<div class="col-md-2 offset-md-3"><label class="control-label">Tên đăng nhập:</label></div>
-			<div class="col-md-4">
-				{% if isNewRecord is defined %}
-				<?= $form->render('username',['class'=>'form-control','required'=>true]) ?>
-				<div class="invalid-feedback">Tên đăng nhập là bắt buộc</div>
-				{% else %}
-				<?= $form->render('username',['class'=>'form-control','readonly'=>true]) ?>
-				{% endif %}
-			</div>
-		</div>
-		<div class='row form-group'>
 			<div class="col-md-2 offset-md-3"><label class="control-label">Tên hiển thị:</label></div>
 			<div class="col-md-4">
 				<?= $form->render('fullname',['class'=>'form-control', 'required'=>true]) ?>
@@ -51,12 +40,6 @@
 			<div class="col-md-4">
 				<?= $form->render('email',['class'=>'form-control', 'required'=>true]) ?>
 				<div class="invalid-feedback">Email là bắt buộc</div>
-			</div>
-		</div>
-		<div class='row form-group'>
-			<div class="col-md-2 offset-md-3"><label class="control-label">Điện thoại:</label></div>
-			<div class="col-md-4">
-				<?= $form->render('phone',['class'=>'form-control']) ?>
 			</div>
 		</div>
 		<div class='row form-group'>

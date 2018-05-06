@@ -23,14 +23,6 @@
 	</div>
 	<div class='row'>
 		<div class="col-md-2">
-			<label class="control-label font-weight-bold">Tên đăng nhập:</label>
-		</div>
-		<div class="col-md-5">
-			<label class="control-label">{{ user.username }}</label>
-		</div>
-	</div>
-	<div class='row'>
-		<div class="col-md-2">
 			<label class="control-label font-weight-bold">Hòm thư:</label>
 		</div>
 		<div class="col-md-5">
@@ -81,7 +73,7 @@
 				<th scope="col">#</th>
 				<th scope="col">Email</th>
 				<th scope="col">Tên hiển thị</th>
-				<th scope="col">Tên đăng nhập</th>
+				<th scope="col">Điện thoại</th>
 				<th scope="col">Quyền</th>
 				<th scope="col">Trạng thái</th>
 				<th scope="col">Ngày tạo</th>
@@ -94,7 +86,11 @@
 				<th scope="row">{{ loop.index }}</th>
 				<td>{{ users.email }}</td>
 				<td>{{ users.fullname }}</td>
-				<td>{{ users.username }}</td>
+				<td>
+					{% if users.MoetUsersInfo.phone is defined %}
+						{{ users.MoetUsersInfo.phone }}
+					{% endif %}
+				</td>
 				<td>{{ users.MoetUsersRoles.name }}</td>
 				<td>
 					{% if users.status == 1 %}

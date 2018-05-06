@@ -163,10 +163,8 @@ class MoetUsers extends \Phalcon\Mvc\Model
     */
     public function createOrUpdate($requestData=[])
     {
-        $this->username = $requestData['username'];
         $this->fullname = $requestData['fullname'];
         $this->email = $requestData['email'];
-        $this->phone = $requestData['phone'];
         $this->status = $requestData['status'];
         $this->role = $requestData['role'];
         return $this->save();
