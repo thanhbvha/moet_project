@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <title>Cổng thông tin điện thử bộ giáo dục và đào tạo</title>
+        <title>Bộ Giáo dục và Đào tạo - Giải thưởng sinh viên nghiên cứu khoa học</title>
         {{ stylesheet_link('css/bootstrap.min.css') }}
         {{ stylesheet_link('css/awesome/css/font-awesome.min.css') }}
         {{ stylesheet_link('css/reset.css') }}

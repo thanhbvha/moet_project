@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="offset-md-3 col-md-6">
 			<h5 class="text-center" style="font-size: 1.25rem;">
-				Chào mừng bạn đến với cổng thông tin giáo dục
+				Giải thưởng sinh viên nghiên cứu khoa học
 			</h5>
 		</div>
 	</div>

@@ -16,7 +16,7 @@
                 'value' => $this->security->getToken()]
             )
         ?>
-        <div class='row form-group'>
+        <!--div class='row form-group'>
             <div class="col-md-2">
                 <label class="control-label font-weight-bold">Tên đăng nhập:</label>
             </div>
@@ -33,7 +33,7 @@
                 <?= $form->render('password',['class'=>'form-control','required'=>true]) ?>
                 <div class="invalid-feedback">Mật khẩu là bắt buộc</div>
             </div>
-        </div>
+        </div-->
         <div class='row form-group'>
             <div class="offset-md-2 col-md-5">
                 <?php $this->flash->output() ?>
@@ -44,12 +44,13 @@
                 <div class="row justify-content-between">
                     <div class="col-md-auto">
                         <button type="button" class="btn btn-default" id='openid-login'>
-                            <i class='fa fa-google'></i>oogle
+                            <img src="/qlkh/public/img/gmail-login.jpeg">
+							<!--i class='fa fa-google'></i>oogle-->
                         </button>
                     </div>
-                    <div class="col-md-auto">
+                    <!--div class="col-md-auto">
                         {{ submit_button('Đăng nhập', 'class':'btn btn-primary') }}
-                    </div>
+                    </div-->
                 </div>
             </div>
         </div>
