@@ -42,7 +42,6 @@ class TopicController extends ControllerBase
             if($this->security->checkToken()){
                 $moetTopics = new MoetTopics();
                 $dataPost = $this->request->getPost();
-                
                 $this->parseStudentInfo($dataPost, $student_info);
 
                 $moetTopics->name = $dataPost['topicName'];
@@ -150,6 +149,14 @@ class TopicController extends ControllerBase
         IOFactory::save($objWriter, $savePath, $fileName);
         
         return $this->response->redirect("http://moet.local.com/files/$fileName.xlsx");
+    }
+
+    public function getSpecializeAction(){
+        $this->view->disable();
+        if($this->request->isPost()){
+            $fields_id = $this->request->hasPost('fields_id') ? $this->request->getPost('fields_id') : null;
+            return (new TopicForm(null, ['fields_id'=>$fields_id]))->render('specialize_id',['class'=>'form-control', 'required'=>'']);
+        }
     }
 
     private function parseStudentInfo($dataPost=[], &$student_info=null){

@@ -27,6 +27,7 @@ return [
                     'index',
                     'form',
                     'export',
+                    'getSpecialize'
                 ],
             ],
             'admin' => [
@@ -81,6 +82,7 @@ return [
                             'index',
                             'form',
                             'export',
+                            'getSpecialize'
                         ],
                     ],
                 ],

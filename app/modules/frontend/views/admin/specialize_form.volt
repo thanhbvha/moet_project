@@ -31,7 +31,7 @@
 		<div class='row form-group'>
 			<div class="col-md-2 offset-md-3"><label class="control-label">Mã:</label></div>
 			<div class="col-md-4">
-				<?= $form->render('code',['class'=>'form-control', 'required'=>true]) ?>
+				<?= $form->render('code',['class'=>'form-control','maxlength'=>15,'required'=>true]) ?>
 				<div class="invalid-feedback">Mã là bắt buộc</div>
 			</div>
 		</div>

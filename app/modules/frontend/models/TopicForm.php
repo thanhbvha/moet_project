@@ -12,60 +12,25 @@ use Phalcon\Validation\Validator\PresenceOf;
 
 class TopicForm extends Form
 {
+	public function initialize($entity, $userOptions){
+		// var_dump($userOptions);exit;
+		$this->add(new Select('units_id',MoetUnits::find(),['using'=>['id','name']]));
 
-	public function initialize(){
-		$this->add(
-			new Select(
-				'units_id',
-				MoetUnits::find(),
-				[
-					'using' => [
-						'id',
-						'name',
-					]
-				]
-			)
-		);
+		$this->add(new Select('fields_id',MoetFields::find(),['using'=>['id','name']]));
 
+		$specialize = MoetUnitsSpecialize::findByFields_id(isset($userOptions['fields_id'])?$userOptions['fields_id']:null);
+		if(count($specialize)===0) $specialize = [''=>'Chọn chuyên ngành'];
 		$this->add(
-			new Select(
-				'fields_id',
-				MoetFields::find(),
-				[
-					'using' => [
-						'id',
-						'name',
-					]
-				]
-			)
-		);
-
-		$this->add(
-			new Select(
-				'specialize_id',
-				MoetUnitsSpecialize::find(),
-				[
-					'using' => [
-						'id',
-						'name',
-					]
-				]
-			)
+			(new Select('specialize_id',$specialize,['using'=>['id','name']]))
 		);
 
 		$this->add( new Text('topicCode') );
 		$this->add( new Text('topicName') );
 
 		$this->add( new Text('student') );
-		$this->add(
-			new Select(
-				'studentSex',
-				[
-					'male' => 'Nam',
-					'female' => 'Nữ'
-				]
-			)
-		);
+
+		$this->add( new Select('studentSex',['male' => 'Nam','female' => 'Nữ']));
+
 		$this->add( new Text('studentGenus') );
 		$this->add( new Text('studentScholastic') );
 		$this->add( new Text('studentSpecialize') );

@@ -31,13 +31,12 @@
 		<div class='row form-group'>
 			<div class="col-md-2"><label class="control-label">Lĩnh vực:</label></div>
 			<div class="col-md-3">
-				<?= $form->render('fields_id',['class'=>'form-control', 'required'=>'']) ?>
-				<div class="invalid-feedback">Lĩnh vực là bắt buộc</div>
+				<?= $form->render('fields_id',['class'=>'form-control', 'onchange'=>'get_specialize(this);', 'required'=>'']) ?>
 			</div>
 			<div class="col-md-2 offset-md-1">
 				<label class="control-label">Chuyên ngành:</label>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3" id="specialize-filter">
 				<?= $form->render('specialize_id',['class'=>'form-control', 'required'=>'']) ?>
 				<div class="invalid-feedback">Chuyên ngành là bắt buộc</div>
 			</div>
@@ -147,3 +146,14 @@
 		</div>
 	{{ end_form() }}
 </div>
+{{ form('topic/getSpecialize', 'method':'post', 'id':'get-specialize') }}
+{{ end_form() }}
+<script type="text/javascript">
+	function get_specialize(_item){
+		var fields_id = _item.value;
+		var url = document.getElementById('get-specialize').getAttribute('action');
+		$.post(url, {fields_id:fields_id},function(data){
+			$('#specialize-filter').html(data);
+        });
+	}
+</script>
