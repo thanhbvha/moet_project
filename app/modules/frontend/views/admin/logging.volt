@@ -4,16 +4,6 @@
 			<h5 style="font-size: 1.25rem;">LOGGING</h5>
 			<hr>
 		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý tài khoản
-			</a>
-		</div>
-		<div class="col-md-auto text-right">
-			<a href="{{ url('admin/topic') }}" class="btn btn-outline-secondary btn-sm">
-				<i class="fa fa-list"></i> Quản lý đề tài
-			</a>
-		</div>
 	</div>
 </div>
 
