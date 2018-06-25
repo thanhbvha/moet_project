@@ -11,7 +11,6 @@ class LoginController extends ControllerBase
 {
     public function initialize()
     {
-        parent::initialize();
         $secuComponent = new SecurityComponent();
         if($secuComponent->isLogin()){
             return $this->response->redirect('/');
