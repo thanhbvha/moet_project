@@ -2,16 +2,18 @@
 
 namespace Moet\Modules\Frontend\Controllers;
 
+use Moet\Components\SecurityComponent;
 use Moet\Library\Google;
 use Moet\Models\MoetUsers;
 use Moet\Modules\Frontend\Models\LoginForm;
 
 class LoginController extends ControllerBase
 {
-    public function beforeExecuteRoute($dispatcher)
+    public function initialize()
     {
-        $sessID = $this->session->getId();
-        if($this->session->has("session_users_$sessID")){
+        parent::initialize();
+        $secuComponent = new SecurityComponent();
+        if($secuComponent->isLogin()){
             return $this->response->redirect('/');
         }
     }

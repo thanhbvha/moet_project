@@ -44,6 +44,12 @@ return [
                     'specializeForm',
                     'logging'
                 ],
+            ],
+            'errors' => [
+                'description' => 'errors resource',
+                'actions' => [
+                    'index', 'error401', 'error404'
+                ],
             ]
         ],
         'role' => [ // setup role
@@ -57,6 +63,11 @@ return [
                             'ggoauth'
                         ],
                     ],
+                    'errors' => [
+                        'actions' => [
+                            'index', 'error401', 'error404'
+                        ]
+                    ]
                 ],
             ],
             'register' => [
